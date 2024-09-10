@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container profile-container">
+    <div class="profile-header">
+        {% if userportfolio.image %}
+        <img src="{{ userportfolio.image.url }}" alt="Profile Image">
+        {% endif %}
+        <div>
+            <h2>{{ userportfolio.full_name }}</h2>
+            <p>{{ userportfolio.email }}</p>
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <h4>Skills:</h4>
+        <p>{{ userportfolio.skills }}</p>
+
+        <h4>Work Experiences:</h4>
+        <p>{{ userportfolio.work_experience }}</p>
+
+        <h4>Education:</h4>
+        <p>{{ userportfolio.education }}</p>
+
+        <h4>Phone:</h4>
+        <p>{{ userportfolio.phone }}</p>
+
+        <h4>Address:</h4>
+        <p>{{ userportfolio.address }}, {{ userportfolio.city }}, {{ userportfolio.country }}</p>
+
+        <h4>About :</h4>
+        <p>{{ userportfolio.about }}</p>
+    </div>
+    <div class="contact-button">
+        <a href="{% url 'contact_user' userportfolio.id %}" class="btn btn-primary">Contact {{ userportfolio.full_name }}</a>
+    </div>
+  
+</div>
+{% endblock content %}

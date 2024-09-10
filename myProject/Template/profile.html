@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container profile-container">
+    <div class="profile-header">
+        {% if user.image %}
+        <img src="{{ user.image.url }}" alt="Profile Image">
+        {% endif %}
+        <div>
+            <h2>{{ user.full_name }}</h2>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <h4>Skills:</h4>
+        <p>{{ user.skills }}</p>
+
+        <h4>Education:</h4>
+        <p>{{ user.education }}</p>
+
+        <h4>Phone:</h4>
+        <p>{{ user.phone }}</p>
+
+        <h4>Address:</h4>
+        <p>{{ user.address }}, {{ user.city }}, {{ user.country }}</p>
+
+        <h4>About Me:</h4>
+        <p>{{ user.about }}</p>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="{% url 'editprofile' %}" class="btn btn-primary">Edit Profile</a>
+    </div>
+</div>
+{% endblock content %}

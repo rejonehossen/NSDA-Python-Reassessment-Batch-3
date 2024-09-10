@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<h1 class="text-center">Edit Profile</h1>
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <label for="full_name" class="col-sm-2 col-form-label">Full Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="full_name" name="full_name" value="{{ user.full_name }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="full_name" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="full_name" name="email" value="{{ user.email }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="image" class="col-sm-2 col-form-label">Profile Image</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" id="image" name="image">
+                {% if user.image %}
+                    <img src="{{ user.image.url }}" alt="Profile Image" width="150" class="mt-2">
+                {% endif %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="skills" class="col-sm-2 col-form-label">Technical Skills</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="skills" name="skills" value="{{ user.skills }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="skills" class="col-sm-2 col-form-label">Work Experiences</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="skills" name="work_experience" value="{{ user.work_experience }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="education" class="col-sm-2 col-form-label">Education</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="education" name="education" value="{{ user.education }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ user.phone }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="address" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="city" class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="city" name="city" value="{{ user.city }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="country" class="col-sm-2 col-form-label">Country</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="country" name="country" value="{{ user.country }}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="about" class="col-sm-2 col-form-label">About</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="about" name="about" rows="4">{{ user.about }}</textarea>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

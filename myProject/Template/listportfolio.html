@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<h1 class="text-center">User List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in users %}
+                <tr>
+                    <td> <a href="{% url 'portfolio' i.id %}">  {{ i.full_name }} </a> </td>
+                   
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.phone }}</td>
+                    <td>
+                        {% if i.image %}
+                            <img src="{{ i.image.url }}" alt="User Image" width="50">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock content %}
